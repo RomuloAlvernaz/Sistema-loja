@@ -34,6 +34,7 @@
 .navbar-custom .navbar-brand img {
     max-width: 100px; 
     max-height: 40px; 
+    margin-left: 10px;
 }
 
 table.table>thead>tr th {
@@ -63,4 +64,10 @@ div.modal-dialog{
 table.table>thead>tr th {   
     color: var(--cor-primaria);
     background-color: #eee;
+}
+
+.navbar-nav .nav-link i.fa-sign-out-alt {
+    font-size: 24px; 
+    color: #fff;
+    margin-right: 10px;
 }
