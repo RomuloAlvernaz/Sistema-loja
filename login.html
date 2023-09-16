@@ -3,26 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Loja</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/style.css"> 
 </head>
 <body>
     <div class="main-login">
+
         <div class="left-login">
-            <h1>Faça Login<br>para acessar o sistema</h1>
+            <h1>FAÇA LOGIN<br>PARA ACESSAR O SISTEMA</h1>
+            <img src="./assets/logo.png" class="left-login-image" alt="logo">
         </div>
+
         <div class="right-login">
-            <div class="box-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
                 <div class="textfield">
                     <label for="usuario">E-mail</label>
-                    <input type="text" name="email" placeholder="Digite seu e-mail">
+                    <input id="email" type="text"  placeholder="Digite seu e-mail">
+                </div>
                 <div class="textfield">
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Digite sua senha">
+                    <input id="senha" type="password" placeholder="Digite sua senha">
                 </div>
-                <button class="btn-entrar">Entrar</button>
-                </div>
+                <button id="btn-entrar">Entrar</button>
             </div>
         </div>
+
     </div>
+
+    <script src="./js/base.js"></script>
+    <script src="./js/login.js"></script>
 </body>
-</html>
+</html> 
