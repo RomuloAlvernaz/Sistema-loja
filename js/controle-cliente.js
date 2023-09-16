@@ -19,8 +19,6 @@ let formModal = {
     cpf: document.getElementById('cpf'),
 }
 
-// const inputPesquisa = document.getElementById('input-pesquisa');
-
 
 btnAdicionar.addEventListener('click', () =>{
     modoEdicao = false;
@@ -267,23 +265,10 @@ function atualizarClienteNaLista(cliente, removerCliente){
 
 obterClientes();
 
-function filtrarClientesPorTermo(termo) {
-    const termoPesquisa = termo.toLowerCase();
-
-    const clientesFiltrados = listaClientes.filter(cliente => {
-        return (
-            cliente.nome.toLowerCase().includes(termoPesquisa) ||
-            cliente.cpfOuCnpj.includes(termoPesquisa) ||
-            cliente.id.toString().includes(termoPesquisa)
-        );
-    });
-
-    popularTabela(clientesFiltrados);
-}
-
 const inputPesquisa = document.getElementById('input-pesquisa');
 
 inputPesquisa.addEventListener('input', () => {
     const termoPesquisa = inputPesquisa.value;
     filtrarClientesPorTermo(termoPesquisa);
 });
+

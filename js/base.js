@@ -47,3 +47,20 @@ function validarUsuarioAutenticado(){
 }
 
 validarUsuarioAutenticado(); 
+
+
+function filtrarClientesPorTermo(termo) {
+    const termoPesquisa = termo.toLowerCase();
+
+    const clientesFiltrados = listaClientes.filter(cliente => {
+        return (
+            cliente.nome.toLowerCase().includes(termoPesquisa) ||
+            cliente.cpfOuCnpj.includes(termoPesquisa) ||
+            cliente.email.toLowerCase().includes(termoPesquisa) ||
+            cliente.telefone.toLowerCase().includes(termoPesquisa) ||
+            cliente.id.toString().includes(termoPesquisa)
+        );
+    });
+
+    popularTabela(clientesFiltrados);
+}
