@@ -19,7 +19,6 @@ btnEntrar.addEventListener('click', () => {
 
     autenticar(userEmail, userSenha);
 
-    //window.open('controle-cliente.html', '_self');
 });
 
 function autenticar(email, senha){
@@ -42,9 +41,16 @@ function autenticar(email, senha){
             salvarToken(response.token);
             salvarUsuario(response.usuario);
             
-            alert("Seja bem-vindo!");
             window.open('controle-cliente.html', '_self');
             
         }
     });
+}
+
+function salvarToken(token){
+    localStorage.setItem('token', token);
+}
+
+function salvarUsuario(usuario){
+    localStorage.setItem('usuario', JSON.stringify(usuario));
 }

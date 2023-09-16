@@ -1,4 +1,5 @@
 
+
 function salvarToken(token){
     localStorage.setItem('token', token);
 }

@@ -10,3 +10,57 @@
     --cor-primaria: #1565C0; 
     --cor-secundaria: #4DB6AC;
 }
+
+.navbar-custom {
+    background-color: var(--cor-secundaria); 
+}
+
+.navbar-custom .navbar-brand {
+    color: var(--cor-primaria); 
+    font-weight: 600;
+}
+
+.navbar-custom .nav-link {
+    color:#fff; 
+    font-weight: 500;
+}
+
+.navbar-custom .nav-item.active .nav-link {
+    color:#fff; 
+    font-weight: 500;
+}
+
+/* Logo*/
+.navbar-custom .navbar-brand img {
+    max-width: 100px; 
+    max-height: 40px; 
+}
+
+table.table>thead>tr th {
+    background-color: #eee;
+}
+
+button.btn{
+    min-width: 80px;
+}
+
+div.modal-dialog{
+    max-width: 700px;
+}
+
+#titulo{
+    color: var(--cor-primaria);
+}
+
+#btn-adicionar{
+    background: var(--cor-primaria);
+}
+
+#btn-adicionar:hover {
+    background: #0D47A1;
+}
+
+table.table>thead>tr th {   
+    color: var(--cor-primaria);
+    background-color: #eee;
+}
