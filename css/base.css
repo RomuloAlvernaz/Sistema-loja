@@ -71,3 +71,18 @@ table.table>thead>tr th {
     color: #fff;
     margin-right: 10px;
 }
+
+/* .search-bar {
+    margin-left: 240px;
+}
+
+.search-bar > input{
+    margin-left: 100px;
+} */
+
+.search-bar {
+    margin-left: 850px;
+    margin-right: 10px;
+    width: 250px;
+}
+
