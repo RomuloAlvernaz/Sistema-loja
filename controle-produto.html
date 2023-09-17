@@ -98,6 +98,7 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>Nome</th>
                             <th>Valor</th>
                             <th>Quantidade</th>
@@ -135,15 +136,22 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-3">
+
+                                <div class="col-sm-4">
+                                    <label for="id" class="form-label">Id</label>
+                                    <input disabled type="text" class="form-control" id="id">
+                                </div>
+                                <div class="col-sm-4">
                                     <label for="valor" class="form-label">Valor</label>
                                     <input type="text" class="form-control" id="valor">
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <label for="quantidade" class="form-label">Quantidade</label>
                                     <input type="text" class="form-control" id="quantidade">
                                 </div>
-                                <div class="col-sm-6">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
                                     <label for="observacao">Observação</label>
                                     <textarea class="form-control" rows="5" id="observacao" name="observacao"></textarea>
                                 </div>

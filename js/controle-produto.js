@@ -13,6 +13,7 @@ let btnSalvar = document.getElementById('btn-salvar');
 let btnCancelar = document.getElementById('btn-cancelar');
 
 let formModal = {
+    id: document.getElementById('id'),
     nome: document.getElementById('nome'),
     valor: document.getElementById('valor'),
     quantidade: document.getElementById('quantidade'),
@@ -51,6 +52,7 @@ function obterProdutoDoModal() {
 
     return new Produto({
 
+        id: formModal.id.value,
         nome: formModal.nome.value,
         valor: formModal.valor.value,
         quantidadeEstoque: formModal.quantidade.value,
@@ -75,11 +77,11 @@ function obterProdutos() {
         .catch()
 }
 
-function editarProduto(nome) {
+function editarProduto(id) {
     modoEdicao = true;
     tituloModal.textContent = "Editar produto";
 
-    let produto = listaProdutos.find(produto => produto.nome == nome);
+    let produto = listaProdutos.find(produto => produto.id == id);
 
     atualizarModalProduto(produto);
 
@@ -88,6 +90,7 @@ function editarProduto(nome) {
 
 function atualizarModalProduto(produto) {
 
+    formModal.id.value = produto.id; 
     formModal.nome.value = produto.nome;
     formModal.valor.value = produto.valor;
     formModal.quantidade.value = produto.quantidadeEstoque;
@@ -96,15 +99,16 @@ function atualizarModalProduto(produto) {
 
 function limparModalProduto() {
 
+    formModal.id.value = "";
     formModal.nome.value = "";
     formModal.valor.value = "";
     formModal.quantidade.value = "";
     formModal.observacao.value = "";
 }
 
-function deletarProduto(nome) {
+function deletarProduto(id) {
 
-    let produto = listaProdutos.find(c => c.nome == nome);
+    let produto = listaProdutos.find(c => c.id == id);
 
     if (confirm("Tem certeza que deseja deletar o produto " + produto.nome + "?")) {
         deletarProdutoBackEnd(produto);
@@ -115,6 +119,7 @@ function deletarProduto(nome) {
 function criarLinhaNaTabela(produto) {
     let tr = document.createElement('tr');
 
+    let tdID = document.createElement('td');
     let tdNome = document.createElement('td');
     let tdValor = document.createElement('td');
     let tdQuantidade = document.createElement('td');
@@ -122,6 +127,7 @@ function criarLinhaNaTabela(produto) {
     let tdAcoes = document.createElement('td');
 
 
+    tdID.textContent = produto.id;
     tdNome.textContent = produto.nome;
     tdValor.textContent = produto.valor;
     tdQuantidade.textContent = produto.quantidadeEstoque;
@@ -135,6 +141,7 @@ function criarLinhaNaTabela(produto) {
                                     Deletar
                                 </button>`;
 
+    tr.appendChild(tdID);
     tr.appendChild(tdNome);
     tr.appendChild(tdValor);
     tr.appendChild(tdQuantidade);
@@ -188,7 +195,7 @@ function adicionarProdutoBackEnd(produto) {
 
 function atualizarProdutoBackEnd(produto) {
 
-    fetch(`${URL}/${produto.nome}`, {
+    fetch(`${URL}/${produto.id}`, {
         method: "PUT",
         headers: {
             'Content-Type': 'application/json',
@@ -196,28 +203,28 @@ function atualizarProdutoBackEnd(produto) {
         },
         body: JSON.stringify(produto)
     })
-        .then(response => response.json())
-        .then(() => {
+    .then(response => response.json())
+    .then(() => {
 
-            atualizarProdutoNaLista(produto, false);
-            modalProduto.hide();
+        atualizarProdutoNaLista(produto, false);
+        modalProduto.hide();
 
-            Swal.fire({
-                icon: 'success',
-                text: 'Produto atualizado com sucesso',
-                showConfirmButton: false,
-                timer: 2000,
-            });
+        Swal.fire({
+            icon: 'success',
+            text: 'Produto atualizado com sucesso',
+            showConfirmButton: false,
+            timer: 2000,
+        });
 
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    })
+    .catch(error => {
+        console.log(error)
+    })
 }
 
 function deletarProdutoBackEnd(produto) {
 
-    fetch(`${URL}/${produto.nome}`, {
+    fetch(`${URL}/${produto.id}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
@@ -245,11 +252,11 @@ function deletarProdutoBackEnd(produto) {
 
 function atualizarProdutoNaLista(produto, deletarProduto) {
 
-    let indice = listaProdutos.findIndex((c) => c.nome == produto.nome);
+    let indice = listaProdutos.findIndex((c) => c.id == produto.id);
 
     (deletarProduto)
         ? listaProdutos.splice(indice, 1)
-        : listaProdutos.splice(indice, 1, cliente);
+        : listaProdutos.splice(indice, 1, produto);
 
     popularTabela(listaProdutos);
 }
