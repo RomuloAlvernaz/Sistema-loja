@@ -73,7 +73,8 @@ function filtrarProdutosPorTermo(termo) {
             produto.nome.toLowerCase().includes(termoPesquisa) ||
             (typeof produto.valor === 'string' && produto.valor.includes(termoPesquisa)) ||
             (typeof produto.quantidade === 'string' && produto.quantidade.includes(termoPesquisa)) ||
-            produto.observacao.toLowerCase().includes(termoPesquisa)
+            produto.observacao.toLowerCase().includes(termoPesquisa) ||
+            produto.id.toString().includes(termoPesquisa)
           
         );
     });

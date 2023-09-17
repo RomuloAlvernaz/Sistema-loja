@@ -229,7 +229,7 @@ function deletarProdutoBackEnd(produto) {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': obterToken()
-        }
+        }=
     })
         .then(response => response.json())
         .then(() => {
