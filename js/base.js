@@ -64,3 +64,19 @@ function filtrarClientesPorTermo(termo) {
 
     popularTabela(clientesFiltrados);
 }
+
+function filtrarProdutosPorTermo(termo) {
+    const termoPesquisa = termo.toLowerCase();
+
+    const produtosFiltrados = listaProdutos.filter(produto => {
+        return (
+            produto.nome.toLowerCase().includes(termoPesquisa) ||
+            (typeof produto.valor === 'string' && produto.valor.includes(termoPesquisa)) ||
+            (typeof produto.quantidade === 'string' && produto.quantidade.includes(termoPesquisa)) ||
+            produto.observacao.toLowerCase().includes(termoPesquisa)
+          
+        );
+    });
+
+    popularTabela(produtosFiltrados);
+}
