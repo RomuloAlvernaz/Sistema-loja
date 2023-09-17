@@ -223,6 +223,12 @@ function atualizarProdutoBackEnd(produto) {
 }
 
 function deletarProdutoBackEnd(produto) {
+    const produtoExistente = listaProdutos.find(p => p.id === produto.id);
+    
+    if (!produtoExistente) {
+        console.error('Produto não encontrado.');
+        return;
+    }
 
     fetch(`${URL}/${produto.id}`, {
         method: "DELETE",
@@ -231,24 +237,27 @@ function deletarProdutoBackEnd(produto) {
             'Authorization': obterToken()
         }
     })
-        .then(response => response.json())
-        .then(() => {
+        .then(response => {
+            if (response.ok) {
+                // Exclusão bem-sucedida, atualize a lista
+                atualizarProdutoNaLista(produto, true);
+                modalProduto.hide();
 
-            atualizarProdutoNaLista(produto, true);
-            modalProduto.hide();
-
-            Swal.fire({
-                icon: 'success',
-                text: 'Produto deletado com sucesso',
-                showConfirmButton: false,
-                timer: 2000,
-            });
-
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Produto deletado com sucesso',
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
+            } else {
+                console.error('Falha ao deletar o produto.');
+            }
         })
         .catch(error => {
-            console.log(error)
-        })
+            console.error(error);
+        });
 }
+
 
 function atualizarProdutoNaLista(produto, deletarProduto) {
 
